@@ -3779,9 +3779,9 @@ returned %d, but should return zero on success." % (self.name, ret))
         :para max_return: list no more than max_return key/value pairs
         :returns: an iterator over the requested omap values, return value from this action
         """
-        start_after = cstr(start_after, 'start_after') if start_after else None
+        start_after_raw = cstr(start_after, 'start_after') if start_after else None
         cdef:
-            char *_start_after = opt_str(start_after)
+            char *_start_after = opt_str(start_after_raw)
             ReadOp _read_op = read_op
             rados_omap_iter_t iter_addr = NULL
             int _max_return = max_return
